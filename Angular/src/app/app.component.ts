@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { DxTreeListComponent } from 'devextreme-angular';
 
 import { Department, Service } from './app.service';
@@ -16,7 +16,6 @@ import DataSource from "devextreme/data/data_source";
 export class AppComponent {
   title = 'TreeList with a summary';
 
-  @ViewChild(DxTreeListComponent, { static: false }) treeList: DxTreeListComponent
   departments: DataSource;
   root: any;
   values: any = [];
@@ -42,7 +41,7 @@ export class AppComponent {
     e.component.isNotFirstLoad = true;
     this.getSummary(this.root);
 
-    var store = this.treeList.instance.getDataSource().store();
+    var store = e.component.getDataSource().store();
     store.load().done((items) => {
       let lastId = items[items.length - 1].ID + 1;
 
