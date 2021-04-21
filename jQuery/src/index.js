@@ -39,6 +39,11 @@ $(function () {
         autoExpandAll: true,
         keyExpr: "ID",
         parentIdExpr: "Head_ID",
+        onRowPrepared: function(e){
+            if (e.rowType === "data" && e.values[0].includes("=")) {
+                e.rowElement[0].style.backgroundColor = "#E8E8E8";
+            }
+        },
         onNodesInitialized: function (e) {
             if (e.component.isNotFirstLoad) return;
             root = e.root;
@@ -70,18 +75,7 @@ $(function () {
                 store.push(changes);
             });
         },
-        columns: [
-            {
-                dataField: "Department",
-                cellTemplate: function (container, options) {
-                    if (options.data.Department.includes("=")) {
-                        let row = treeList.getRowElement(options.rowIndex);
-                        row[0].style.backgroundColor = "#E8E8E8";
-                    }
-                    container.append($("<div>", { text: options.data.Department }));
-                }
-            },
-            "Location",
+        columns: ["Department", "Location",
             {
                 dataField: "Budget",
                 format: "currency"
