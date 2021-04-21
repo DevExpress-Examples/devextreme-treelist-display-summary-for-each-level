@@ -54,7 +54,7 @@ $(function () {
             e.component.isNotFirstLoad = true;
             getSummary(root);
 
-            var store = treeList.getDataSource().store();
+            var store = e.component.getDataSource().store();
             store.load().done((items) => {
                 let lastId = items[items.length - 1].ID + 1;
 
