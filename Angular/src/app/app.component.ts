@@ -93,13 +93,9 @@ export class AppComponent {
     return result;
   }
 
-  departmentTemplate = (container, options) => {
-    let department = document.createElement("div");
-    department.innerHTML = "<span>" + options.data.Department + "</span>";
-    if (options.data.Department.includes("=")) {
-      let row = this.treeList.instance.getRowElement(options.rowIndex);
-      row[0].setAttribute("style","background-color: #E8E8E8;");
+  onRowPrepared(e) {
+    if (e.rowType === "data" && e.values[0].includes("=")) {
+      e.rowElement.style.backgroundColor = "#E8E8E8";
     }
-    container.append(department)
   }
 }
