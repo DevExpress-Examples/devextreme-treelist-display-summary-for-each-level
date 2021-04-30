@@ -1,6 +1,6 @@
 $(function () {
     let values = [];
-    let root;
+    
     let getSummary = function (node) {
         let result = [0, 0];
         if (node.hasChildren) {
@@ -44,15 +44,10 @@ $(function () {
                 e.rowElement[0].style.backgroundColor = "#E8E8E8";
             }
         },
-        onNodesInitialized: function (e) {
-            if (e.component.isNotFirstLoad) return;
-            root = e.root;
-
-        },
         onContentReady: function (e) {
             if (e.component.isNotFirstLoad) return;
             e.component.isNotFirstLoad = true;
-            getSummary(root);
+            getSummary(e.component.getRootNode());
 
             var store = e.component.getDataSource().store();
             store.load().done((items) => {
