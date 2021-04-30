@@ -1,0 +1,8 @@
+.App {
+  margin: 50px 50px;
+  width: 90vh;
+}
+
+#departments {
+    max-height: 440px;
+}
