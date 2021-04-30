@@ -17,7 +17,6 @@ export class AppComponent {
   title = 'TreeList with a summary';
 
   departments: DataSource;
-  root: any;
   values: any = [];
 
   constructor(service: Service) {
@@ -31,15 +30,10 @@ export class AppComponent {
     this.getSummary = this.getSummary.bind(this);
   }
 
-  onNodesInitialized(e: any) {
-    if (e.component.isNotFirstLoad) return;
-    this.root = e.root;
-  }
-
   onContentReady(e: any) {
     if (e.component.isNotFirstLoad) return;
     e.component.isNotFirstLoad = true;
-    this.getSummary(this.root);
+    this.getSummary(e.component.getRootNode());
 
     var store = e.component.getDataSource().store();
     store.load().done((items) => {
