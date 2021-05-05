@@ -1,0 +1,15 @@
+<dx-tree-list id="treeList"
+              [dataSource]="departments"
+              [repaintChangesOnly]="true"
+              keyExpr="ID"
+              parentIdExpr="Head_ID"
+              [showRowLines]="true"
+              [showBorders]="true"
+              [columnAutoWidth]="true"
+              [autoExpandAll]="true"
+              (onContentReady)="onContentReady($event)"
+              (onRowPrepared)="onRowPrepared($event)">
+  <dxi-column dataField="Department"></dxi-column>
+  <dxi-column dataField="Location"></dxi-column>
+  <dxi-column dataField="Budget" format="currency"></dxi-column>
+</dx-tree-list>
