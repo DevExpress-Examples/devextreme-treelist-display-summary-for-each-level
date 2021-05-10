@@ -1,4 +1,7 @@
 # How to display a summary for each level in TreeList
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/355815169/)**
+<!-- run online end -->
 This example illustrates how to display a summary (e.g. count|sum) for each level in TreeList.
 
 The calculation starts when the data was initially loaded in the [onContentReady](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onContentReady) event handler.  Summmary calculation is implemented in the `getSummary` function. In this function we use recursion in order to traverse all nodes and get the necessary data to calculate the total value for each level.
