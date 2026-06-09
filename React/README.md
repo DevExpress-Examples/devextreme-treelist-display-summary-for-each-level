@@ -1,34 +1,34 @@
-# React
+# React + TypeScript + Vite + DevExtreme
 
-Take a look at the following files of this example to see the required code: 
+For more information about this example check the [Readme](../README.md).
 
-Your files go here
+## Build and Lint
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Install dependencies:
+```sh
+npm install
+```
 
-## Available Scripts
+Start dev server:
+```sh
+npm run dev
+```
+Open: http://localhost:5173/
 
-In the project directory, you can run:
+Build production bundle:
+```sh
+npm run build
+```
 
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Run linter:
+```sh
+npm run lint
+```
 
 ## Further help
 
-To get more help on DevExtreme submit an issue on [GitHub](https://github.com/DevExpress/devextreme/issues) or [Support Center](https://www.devexpress.com/Support/Center/Question/Create)
+React docs: https://react.dev/learn
+Vite docs: https://vite.dev/
+DevExtreme React docs: https://js.devexpress.com/React/Documentation
 
-
-
+To get more help with DevExtreme, submit a ticket through the [Support Center](https://supportcenter.devexpress.com/ticket/create).

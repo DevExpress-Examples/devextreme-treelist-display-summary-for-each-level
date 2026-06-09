@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DxTreeListComponent } from 'devextreme-angular';
+import { DxTreeListModule, DxTreeListComponent } from 'devextreme-angular';
 
 import { Department, Service } from './app.service';
 
@@ -7,12 +7,11 @@ import ArrayStore from "devextreme/data/array_store";
 import DataSource from "devextreme/data/data_source";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [Service]
+    selector: 'app-root',
+    imports: [],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
 })
-
 export class AppComponent {
   title = 'TreeList with a summary';
 
