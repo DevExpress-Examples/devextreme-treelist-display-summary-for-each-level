@@ -1,83 +1,79 @@
-$(function () {
-    let values = [];
-    
-    let getSummary = function (node) {
-        let result = [0, 0];
-        if (node.hasChildren) {
-            node.children.forEach(function (n) {
-                result[0] = result[0] + 1; //count
-                result[1] += n.data.Budget; //sum
-                getSummary(n).forEach(function (item, index) {
-                    result[index] += item;
-                });
-            });
+import { employees } from './data.js';
+
+$(() => {
+  $('#employees').dxTreeList({
+    dataSource: employees,
+    rootValue: -1,
+    keyExpr: 'ID',
+    parentIdExpr: 'Head_ID',
+    columns: [
+      {
+        dataField: 'Title',
+        caption: 'Position',
+      },
+      'Full_Name',
+      'City',
+      'State',
+      'Mobile_Phone',
+      {
+        dataField: 'Hire_Date',
+        dataType: 'date',
+      },
+    ],
+    sorting: {
+      mode: 'multiple',
+    },
+    searchPanel: {
+      visible: true,
+    },
+    filterRow: {
+      visible: true,
+    },
+    headerFilter: {
+      visible: true,
+    },
+    expandedRowKeys: [1],
+    showRowLines: true,
+    showBorders: true,
+    columnAutoWidth: true,
+    onNodesInitialized(e) {
+      function calculateSummary(node) {
+        let sum = 0;
+
+        e.component.forEachNode(node.children, (n) => {
+          if (n.visible) {
+            sum++;
+          }
+        });
+
+        return sum;
+      }
+
+      function createSummaryNode(node, count) {
+        return {
+          key: `summary_${node.key}`,
+          parent: node.parent,
+          isSummary: true,
+          data: {
+            Title: `Count: ${count}`,
+          },
+          children: [],
+          visible: true,
+        };
+      }
+
+      e.component.forEachNode([e.root], (node) => {
+        const count = calculateSummary(node);
+
+        if (count > 0) {
+          node.children.push(createSummaryNode(node, count));
         }
-        if (result[0] > 0) {
-            if (node.data) {
-                values.push({
-                    Department: node.data.Department + " Count = " + result[0],
-                    Head_ID: node.data.ID,
-                    Budget: result[1]
-                });
-            } else
-                values.push({
-                    Department: "Overall Count = " + result[0],
-                    Head_ID: 0,
-                    Budget: result[1]
-                });
-        }
-        return result;
-    };
-    let treeList = $("#employees").dxTreeList({
-        dataSource: {
-            store: new DevExpress.data.ArrayStore({
-                data: data
-            }),
-            reshapeOnPush: true
-        },
-        repaintChangesOnly: true,
-        autoExpandAll: true,
-        keyExpr: "ID",
-        parentIdExpr: "Head_ID",
-        onRowPrepared: function(e){
-            if (e.rowType === "data" && e.values[0].includes("=")) {
-                e.rowElement[0].style.backgroundColor = "#E8E8E8";
-            }
-        },
-        onContentReady: function (e) {
-            if (e.component.isNotFirstLoad) return;
-            e.component.isNotFirstLoad = true;
-            getSummary(e.component.getRootNode());
-
-            var store = e.component.getDataSource().store();
-            store.load().done((items) => {
-                let lastId = items[items.length - 1].ID + 1;
-
-                let changes = [];
-                for (let i = 0; i < values.length; i++) {
-
-                    changes.push({
-                        type: "insert",
-                        data: {
-                            ID: lastId,
-                            Head_ID: values[i].Head_ID,
-                            Department: values[i].Department,
-                            Budget: values[i].Budget
-                        }
-                    });
-                    lastId++;
-                }
-                store.push(changes);
-            });
-        },
-        columns: ["Department", "Location",
-            {
-                dataField: "Budget",
-                format: "currency"
-            }
-        ],
-        showRowLines: true,
-        showBorders: true,
-        columnAutoWidth: true
-    }).dxTreeList("instance");
+      });
+    },
+    onRowPrepared(e) {
+      if (e.rowType === 'data' && e.node?.isSummary) {
+        e.rowElement.addClass('summary-row');
+      }
+    },
+  });
 });
