@@ -6,356 +6,426 @@ using System.Threading.Tasks;
 
 namespace ASP_NET_Core.Models;
 static class SampleData {
-    public static List<SampleOrder> Orders = [
-        new SampleOrder {
-            OrderID = 10248,
-            OrderDate = new DateTime(1996, 7, 4),
-            ShipCountry = "France",
-            ShipCity = "Reims",
-            CustomerName = "Paul Henriot"
+    public static List<SampleEmployee> Employees = [
+        new SampleEmployee {
+            ID = 1,
+            Head_ID = -1,
+            Full_Name = "John Heart",
+            Prefix = "Mr.",
+            Title = "CEO",
+            City = "Los Angeles",
+            State = "California",
+            Email = "jheart@dx-email.com",
+            Skype = "jheart_DX_skype",
+            Mobile_Phone = "(213) 555-9392",
+            Birth_Date = new DateTime(1964, 3, 16),
+            Hire_Date = new DateTime(1995, 1, 15)
         },
-        new SampleOrder {
-            OrderID = 10249,
-            OrderDate = new DateTime(1996, 7, 5),
-            ShipCountry = "Germany",
-            ShipCity = "Münster",
-            CustomerName = "Karin Josephs"
+        new SampleEmployee {
+            ID = 2,
+            Head_ID = 1,
+            Full_Name = "Samantha Bright",
+            Prefix = "Dr.",
+            Title = "COO",
+            City = "Los Angeles",
+            State = "California",
+            Email = "samanthab@dx-email.com",
+            Skype = "samanthab_DX_skype",
+            Mobile_Phone = "(213) 555-2858",
+            Birth_Date = new DateTime(1966, 5, 2),
+            Hire_Date = new DateTime(2004, 5, 24)
         },
-        new SampleOrder {
-            OrderID = 10250,
-            OrderDate = new DateTime(1996, 7, 8),
-            ShipCountry = "Brazil",
-            ShipCity = "Rio de Janeiro",
-            CustomerName = "Mario Pontes"
+        new SampleEmployee {
+            ID = 3,
+            Head_ID = 1,
+            Full_Name = "Arthur Miller",
+            Prefix = "Mr.",
+            Title = "CTO",
+            City = "Denver",
+            State = "Colorado",
+            Email = "arthurm@dx-email.com",
+            Skype = "arthurm_DX_skype",
+            Mobile_Phone = "(310) 555-8583",
+            Birth_Date = new DateTime(1972, 7, 11),
+            Hire_Date = new DateTime(2007, 12, 18)
         },
-        new SampleOrder {
-            OrderID = 10251,
-            OrderDate = new DateTime(1996, 7, 8),
-            ShipCountry = "France",
-            ShipCity = "Lyon",
-            CustomerName = "Mary Saveley"
+        new SampleEmployee {
+            ID = 4,
+            Head_ID = 1,
+            Full_Name = "Robert Reagan",
+            Prefix = "Mr.",
+            Title = "CMO",
+            City = "Bentonville",
+            State = "Arkansas",
+            Email = "robertr@dx-email.com",
+            Skype = "robertr_DX_skype",
+            Mobile_Phone = "(818) 555-2387",
+            Birth_Date = new DateTime(1974, 9, 7),
+            Hire_Date = new DateTime(2002, 11, 8)
         },
-        new SampleOrder {
-            OrderID = 10252,
-            OrderDate = new DateTime(1996, 7, 9),
-            ShipCountry = "Belgium",
-            ShipCity = "Charleroi",
-            CustomerName = "Pascale Cartrain"
+        new SampleEmployee {
+            ID = 5,
+            Head_ID = 1,
+            Full_Name = "Greta Sims",
+            Prefix = "Ms.",
+            Title = "HR Manager",
+            City = "Atlanta",
+            State = "Georgia",
+            Email = "gretas@dx-email.com",
+            Skype = "gretas_DX_skype",
+            Mobile_Phone = "(818) 555-6546",
+            Birth_Date = new DateTime(1977, 11, 22),
+            Hire_Date = new DateTime(1998, 4, 23)
         },
-        new SampleOrder {
-            OrderID = 10253,
-            OrderDate = new DateTime(1996, 7, 10),
-            ShipCountry = "Brazil",
-            ShipCity = "Rio de Janeiro",
-            CustomerName = "Mario Pontes"
+        new SampleEmployee {
+            ID = 6,
+            Head_ID = 3,
+            Full_Name = "Brett Wade",
+            Prefix = "Mr.",
+            Title = "IT Manager",
+            City = "Reno",
+            State = "Nevada",
+            Email = "brettw@dx-email.com",
+            Skype = "brettw_DX_skype",
+            Mobile_Phone = "(626) 555-0358",
+            Birth_Date = new DateTime(1968, 12, 1),
+            Hire_Date = new DateTime(2009, 3, 6)
         },
-        new SampleOrder {
-            OrderID = 10254,
-            OrderDate = new DateTime(1996, 7, 11),
-            ShipCountry = "Switzerland",
-            ShipCity = "Bern",
-            CustomerName = "Yang Wang"
+        new SampleEmployee {
+            ID = 7,
+            Head_ID = 5,
+            Full_Name = "Sandra Johnson",
+            Prefix = "Mrs.",
+            Title = "Controller",
+            City = "Beaver",
+            State = "Utah",
+            Email = "sandraj@dx-email.com",
+            Skype = "sandraj_DX_skype",
+            Mobile_Phone = "(562) 555-2082",
+            Birth_Date = new DateTime(1974, 11, 15),
+            Hire_Date = new DateTime(2005, 5, 11)
         },
-        new SampleOrder {
-            OrderID = 10255,
-            OrderDate = new DateTime(1996, 7, 12),
-            ShipCountry = "Switzerland",
-            ShipCity = "Genève",
-            CustomerName = "Michael Holz"
+        new SampleEmployee {
+            ID = 8,
+            Head_ID = 4,
+            Full_Name = "Ed Holmes",
+            Prefix = "Dr.",
+            Title = "Sales Manager",
+            City = "Malibu",
+            State = "California",
+            Email = "edwardh@dx-email.com",
+            Skype = "edwardh_DX_skype",
+            Mobile_Phone = "(310) 555-1288",
+            Birth_Date = new DateTime(1973, 7, 14),
+            Hire_Date = new DateTime(2005, 6, 19)
         },
-        new SampleOrder {
-            OrderID = 10256,
-            OrderDate = new DateTime(1996, 7, 15),
-            ShipCountry = "Brazil",
-            ShipCity = "Resende",
-            CustomerName = "Paula Parente"
+        new SampleEmployee {
+            ID = 9,
+            Head_ID = 3,
+            Full_Name = "Barb Banks",
+            Prefix = "Mrs.",
+            Title = "Support Manager",
+            City = "Phoenix",
+            State = "Arizona",
+            Email = "barbarab@dx-email.com",
+            Skype = "barbarab_DX_skype",
+            Mobile_Phone = "(310) 555-3355",
+            Birth_Date = new DateTime(1979, 4, 14),
+            Hire_Date = new DateTime(2002, 8, 7)
         },
-        new SampleOrder {
-            OrderID = 10257,
-            OrderDate = new DateTime(1996, 7, 16),
-            ShipCountry = "Venezuela",
-            ShipCity = "San Cristóbal",
-            CustomerName = "Carlos Hernández"
+        new SampleEmployee {
+            ID = 10,
+            Head_ID = 2,
+            Full_Name = "Kevin Carter",
+            Prefix = "Mr.",
+            Title = "Shipping Manager",
+            City = "San Diego",
+            State = "California",
+            Email = "kevinc@dx-email.com",
+            Skype = "kevinc_DX_skype",
+            Mobile_Phone = "(213) 555-2840",
+            Birth_Date = new DateTime(1978, 1, 9),
+            Hire_Date = new DateTime(2009, 8, 11)
         },
-        new SampleOrder {
-            OrderID = 10258,
-            OrderDate = new DateTime(1996, 7, 17),
-            ShipCountry = "Austria",
-            ShipCity = "Graz",
-            CustomerName = "Roland Mendel"
+        new SampleEmployee {
+            ID = 11,
+            Head_ID = 5,
+            Full_Name = "Cindy Stanwick",
+            Prefix = "Ms.",
+            Title = "HR Assistant",
+            City = "Little Rock",
+            State = "Arkansas",
+            Email = "cindys@dx-email.com",
+            Skype = "cindys_DX_skype",
+            Mobile_Phone = "(818) 555-6655",
+            Birth_Date = new DateTime(1985, 6, 5),
+            Hire_Date = new DateTime(2008, 3, 24)
         },
-        new SampleOrder {
-            OrderID = 10259,
-            OrderDate = new DateTime(1996, 7, 18),
-            ShipCountry = "Mexico",
-            ShipCity = "México D.F.",
-            CustomerName = "Francisco Chang"
+        new SampleEmployee {
+            ID = 12,
+            Head_ID = 8,
+            Full_Name = "Sammy Hill",
+            Prefix = "Mr.",
+            Title = "Sales Assistant",
+            City = "Pasadena",
+            State = "California",
+            Email = "sammyh@dx-email.com",
+            Skype = "sammyh_DX_skype",
+            Mobile_Phone = "(626) 555-7292",
+            Birth_Date = new DateTime(1984, 2, 17),
+            Hire_Date = new DateTime(2012, 2, 1)
         },
-        new SampleOrder {
-            OrderID = 10260,
-            OrderDate = new DateTime(1996, 7, 19),
-            ShipCountry = "Germany",
-            ShipCity = "Köln",
-            CustomerName = "Henriette Pfalzheim"
+        new SampleEmployee {
+            ID = 13,
+            Head_ID = 10,
+            Full_Name = "Davey Jones",
+            Prefix = "Mr.",
+            Title = "Shipping Assistant",
+            City = "Pasadena",
+            State = "California",
+            Email = "davidj@dx-email.com",
+            Skype = "davidj_DX_skype",
+            Mobile_Phone = "(626) 555-0281",
+            Birth_Date = new DateTime(1983, 3, 6),
+            Hire_Date = new DateTime(2011, 4, 24)
         },
-        new SampleOrder {
-            OrderID = 10261,
-            OrderDate = new DateTime(1996, 7, 19),
-            ShipCountry = "Brazil",
-            ShipCity = "Rio de Janeiro",
-            CustomerName = "Bernardo Batista"
+        new SampleEmployee {
+            ID = 14,
+            Head_ID = 10,
+            Full_Name = "Victor Norris",
+            Prefix = "Mr.",
+            Title = "Shipping Assistant",
+            City = "Little Rock",
+            State = "Arkansas",
+            Email = "victorn@dx-email.com",
+            Skype = "victorn_DX_skype",
+            Mobile_Phone = "(213) 555-9278",
+            Birth_Date = new DateTime(1986, 7, 23),
+            Hire_Date = new DateTime(2012, 7, 23)
         },
-        new SampleOrder {
-            OrderID = 10262,
-            OrderDate = new DateTime(1996, 7, 22),
-            ShipCountry = "USA",
-            ShipCity = "Albuquerque",
-            CustomerName = "Paula Wilson"
+        new SampleEmployee {
+            ID = 15,
+            Head_ID = 10,
+            Full_Name = "Mary Stern",
+            Prefix = "Ms.",
+            Title = "Shipping Assistant",
+            City = "Beaver",
+            State = "Utah",
+            Email = "marys@dx-email.com",
+            Skype = "marys_DX_skype",
+            Mobile_Phone = "(818) 555-7857",
+            Birth_Date = new DateTime(1982, 4, 8),
+            Hire_Date = new DateTime(2012, 8, 12)
         },
-        new SampleOrder {
-            OrderID = 10263,
-            OrderDate = new DateTime(1996, 7, 23),
-            ShipCountry = "Austria",
-            ShipCity = "Graz",
-            CustomerName = "Roland Mendel"
+        new SampleEmployee {
+            ID = 16,
+            Head_ID = 10,
+            Full_Name = "Robin Cosworth",
+            Prefix = "Mrs.",
+            Title = "Shipping Assistant",
+            City = "Los Angeles",
+            State = "California",
+            Email = "robinc@dx-email.com",
+            Skype = "robinc_DX_skype",
+            Mobile_Phone = "(818) 555-0942",
+            Birth_Date = new DateTime(1981, 6, 12),
+            Hire_Date = new DateTime(2012, 9, 1)
         },
-        new SampleOrder {
-            OrderID = 10264,
-            OrderDate = new DateTime(1996, 7, 24),
-            ShipCountry = "Sweden",
-            ShipCity = "Bräcke",
-            CustomerName = "Maria Larsson"
+        new SampleEmployee {
+            ID = 17,
+            Head_ID = 9,
+            Full_Name = "Kelly Rodriguez",
+            Prefix = "Ms.",
+            Title = "Support Assistant",
+            City = "Boise",
+            State = "Idaho",
+            Email = "kellyr@dx-email.com",
+            Skype = "kellyr_DX_skype",
+            Mobile_Phone = "(818) 555-9248",
+            Birth_Date = new DateTime(1988, 5, 11),
+            Hire_Date = new DateTime(2012, 10, 13)
         },
-        new SampleOrder {
-            OrderID = 10265,
-            OrderDate = new DateTime(1996, 7, 25),
-            ShipCountry = "France",
-            ShipCity = "Strasbourg",
-            CustomerName = "Frédérique Citeaux"
+        new SampleEmployee {
+            ID = 18,
+            Head_ID = 9,
+            Full_Name = "James Anderson",
+            Prefix = "Mr.",
+            Title = "Support Assistant",
+            City = "Atlanta",
+            State = "Georgia",
+            Email = "jamesa@dx-email.com",
+            Skype = "jamesa_DX_skype",
+            Mobile_Phone = "(323) 555-4702",
+            Birth_Date = new DateTime(1987, 1, 29),
+            Hire_Date = new DateTime(2012, 10, 18)
         },
-        new SampleOrder {
-            OrderID = 10266,
-            OrderDate = new DateTime(1996, 7, 26),
-            ShipCountry = "Finland",
-            ShipCity = "Oulu",
-            CustomerName = "Pirkko Koskitalo"
+        new SampleEmployee {
+            ID = 19,
+            Head_ID = 9,
+            Full_Name = "Antony Remmen",
+            Prefix = "Mr.",
+            Title = "Support Assistant",
+            City = "Boise",
+            State = "Idaho",
+            Email = "anthonyr@dx-email.com",
+            Skype = "anthonyr_DX_skype",
+            Mobile_Phone = "(310) 555-6625",
+            Birth_Date = new DateTime(1986, 2, 19),
+            Hire_Date = new DateTime(2013, 1, 19)
         },
-        new SampleOrder {
-            OrderID = 10267,
-            OrderDate = new DateTime(1996, 7, 29),
-            ShipCountry = "Germany",
-            ShipCity = "München",
-            CustomerName = "Peter Franken"
+        new SampleEmployee {
+            ID = 20,
+            Head_ID = 8,
+            Full_Name = "Olivia Peyton",
+            Prefix = "Mrs.",
+            Title = "Sales Assistant",
+            City = "Atlanta",
+            State = "Georgia",
+            Email = "oliviap@dx-email.com",
+            Skype = "oliviap_DX_skype",
+            Mobile_Phone = "(310) 555-2728",
+            Birth_Date = new DateTime(1981, 6, 3),
+            Hire_Date = new DateTime(2012, 5, 14)
         },
-        new SampleOrder {
-            OrderID = 10268,
-            OrderDate = new DateTime(1996, 7, 30),
-            ShipCountry = "Venezuela",
-            ShipCity = "Caracas",
-            CustomerName = "Manuel Pereira"
+        new SampleEmployee {
+            ID = 21,
+            Head_ID = 6,
+            Full_Name = "Taylor Riley",
+            Prefix = "Mr.",
+            Title = "Network Admin",
+            City = "San Jose",
+            State = "California",
+            Email = "taylorr@dx-email.com",
+            Skype = "taylorr_DX_skype",
+            Mobile_Phone = "(310) 555-7276",
+            Birth_Date = new DateTime(1982, 8, 14),
+            Hire_Date = new DateTime(2012, 4, 14)
         },
-        new SampleOrder {
-            OrderID = 10269,
-            OrderDate = new DateTime(1996, 7, 31),
-            ShipCountry = "USA",
-            ShipCity = "Seattle",
-            CustomerName = "Karl Jablonski"
+        new SampleEmployee {
+            ID = 22,
+            Head_ID = 6,
+            Full_Name = "Amelia Harper",
+            Prefix = "Mrs.",
+            Title = "Network Admin",
+            City = "Los Angeles",
+            State = "California",
+            Email = "ameliah@dx-email.com",
+            Skype = "ameliah_DX_skype",
+            Mobile_Phone = "(213) 555-4276",
+            Birth_Date = new DateTime(1983, 11, 19),
+            Hire_Date = new DateTime(2011, 2, 10)
         },
-        new SampleOrder {
-            OrderID = 10270,
-            OrderDate = new DateTime(1996, 8, 1),
-            ShipCountry = "Finland",
-            ShipCity = "Oulu",
-            CustomerName = "Pirkko Koskitalo"
+        new SampleEmployee {
+            ID = 23,
+            Head_ID = 6,
+            Full_Name = "Wally Hobbs",
+            Prefix = "Mr.",
+            Title = "Programmer",
+            City = "Chatsworth",
+            State = "California",
+            Email = "wallyh@dx-email.com",
+            Skype = "wallyh_DX_skype",
+            Mobile_Phone = "(818) 555-8872",
+            Birth_Date = new DateTime(1984, 12, 24),
+            Hire_Date = new DateTime(2011, 2, 17)
         },
-        new SampleOrder {
-            OrderID = 10271,
-            OrderDate = new DateTime(1996, 8, 1),
-            ShipCountry = "USA",
-            ShipCity = "Lander",
-            CustomerName = "Art Braunschweiger"
+        new SampleEmployee {
+            ID = 24,
+            Head_ID = 6,
+            Full_Name = "Brad Jameson",
+            Prefix = "Mr.",
+            Title = "Programmer",
+            City = "San Fernando",
+            State = "California",
+            Email = "bradleyj@dx-email.com",
+            Skype = "bradleyj_DX_skype",
+            Mobile_Phone = "(818) 555-4646",
+            Birth_Date = new DateTime(1988, 10, 12),
+            Hire_Date = new DateTime(2011, 3, 2)
         },
-        new SampleOrder {
-            OrderID = 10272,
-            OrderDate = new DateTime(1996, 8, 2),
-            ShipCountry = "USA",
-            ShipCity = "Albuquerque",
-            CustomerName = "Paula Wilson"
+        new SampleEmployee {
+            ID = 25,
+            Head_ID = 6,
+            Full_Name = "Karen Goodson",
+            Prefix = "Miss",
+            Title = "Programmer",
+            City = "South Pasadena",
+            State = "California",
+            Email = "kareng@dx-email.com",
+            Skype = "kareng_DX_skype",
+            Mobile_Phone = "(626) 555-0908",
+            Birth_Date = new DateTime(1987, 4, 26),
+            Hire_Date = new DateTime(2011, 3, 14)
         },
-        new SampleOrder {
-            OrderID = 10273,
-            OrderDate = new DateTime(1996, 8, 5),
-            ShipCountry = "Germany",
-            ShipCity = "Cunewalde",
-            CustomerName = "Horst Kloss"
+        new SampleEmployee {
+            ID = 26,
+            Head_ID = 5,
+            Full_Name = "Marcus Orbison",
+            Prefix = "Mr.",
+            Title = "Travel Coordinator",
+            City = "Los Angeles",
+            State = "California",
+            Email = "marcuso@dx-email.com",
+            Skype = "marcuso_DX_skype",
+            Mobile_Phone = "(213) 555-7098",
+            Birth_Date = new DateTime(1982, 3, 2),
+            Hire_Date = new DateTime(2005, 5, 19)
         },
-        new SampleOrder {
-            OrderID = 10274,
-            OrderDate = new DateTime(1996, 8, 6),
-            ShipCountry = "France",
-            ShipCity = "Reims",
-            CustomerName = "Paul Henriot"
+        new SampleEmployee {
+            ID = 27,
+            Head_ID = 5,
+            Full_Name = "Sandy Bright",
+            Prefix = "Ms.",
+            Title = "Benefits Coordinator",
+            City = "Denver",
+            State = "Colorado",
+            Email = "sandrab@dx-email.com",
+            Skype = "sandrab_DX_skype",
+            Mobile_Phone = "(818) 555-0524",
+            Birth_Date = new DateTime(1983, 9, 11),
+            Hire_Date = new DateTime(2005, 6, 4)
         },
-        new SampleOrder {
-            OrderID = 10275,
-            OrderDate = new DateTime(1996, 8, 7),
-            ShipCountry = "Italy",
-            ShipCity = "Bergamo",
-            CustomerName = "Giovanni Rovelli"
+        new SampleEmployee {
+            ID = 28,
+            Head_ID = 6,
+            Full_Name = "Morgan Kennedy",
+            Prefix = "Mrs.",
+            Title = "Graphic Designer",
+            City = "San Fernando Valley",
+            State = "California",
+            Email = "morgank@dx-email.com",
+            Skype = "morgank_DX_skype",
+            Mobile_Phone = "(818) 555-8238",
+            Birth_Date = new DateTime(1984, 7, 17),
+            Hire_Date = new DateTime(2012, 1, 11)
         },
-        new SampleOrder {
-            OrderID = 10276,
-            OrderDate = new DateTime(1996, 8, 8),
-            ShipCountry = "Mexico",
-            ShipCity = "México D.F.",
-            CustomerName = "Miguel Angel Paolino"
+        new SampleEmployee {
+            ID = 29,
+            Head_ID = 28,
+            Full_Name = "Violet Bailey",
+            Prefix = "Ms.",
+            Title = "Jr Graphic Designer",
+            City = "La Canada",
+            State = "California",
+            Email = "violetb@dx-email.com",
+            Skype = "violetb_DX_skype",
+            Mobile_Phone = "(818) 555-2478",
+            Birth_Date = new DateTime(1985, 6, 10),
+            Hire_Date = new DateTime(2012, 1, 19)
         },
-        new SampleOrder {
-            OrderID = 10277,
-            OrderDate = new DateTime(1996, 8, 9),
-            ShipCountry = "Germany",
-            ShipCity = "Leipzig",
-            CustomerName = "Alexander Feuer"
+        new SampleEmployee {
+            ID = 30,
+            Head_ID = 5,
+            Full_Name = "Ken Samuelson",
+            Prefix = "Dr.",
+            Title = "Ombudsman",
+            City = "St. Louis",
+            State = "Missouri",
+            Email = "kents@dx-email.com",
+            Skype = "kents_DX_skype",
+            Mobile_Phone = "(562) 555-9282",
+            Birth_Date = new DateTime(1972, 9, 11),
+            Hire_Date = new DateTime(2009, 4, 22)
         },
-        new SampleOrder {
-            OrderID = 10278,
-            OrderDate = new DateTime(1996, 8, 12),
-            ShipCountry = "Sweden",
-            ShipCity = "Luleå",
-            CustomerName = "Christina Berglund"
-        },
-        new SampleOrder {
-            OrderID = 10279,
-            OrderDate = new DateTime(1996, 8, 13),
-            ShipCountry = "Germany",
-            ShipCity = "Frankfurt a.M.",
-            CustomerName = "Renate Messner"
-        },
-        new SampleOrder {
-            OrderID = 10280,
-            OrderDate = new DateTime(1996, 8, 14),
-            ShipCountry = "Sweden",
-            ShipCity = "Luleå",
-            CustomerName = "Christina Berglund"
-        },
-        new SampleOrder {
-            OrderID = 10281,
-            OrderDate = new DateTime(1996, 8, 14),
-            ShipCountry = "Spain",
-            ShipCity = "Madrid",
-            CustomerName = "Alejandra Camino"
-        },
-        new SampleOrder {
-            OrderID = 10282,
-            OrderDate = new DateTime(1996, 8, 15),
-            ShipCountry = "Spain",
-            ShipCity = "Madrid",
-            CustomerName = "Alejandra Camino"
-        },
-        new SampleOrder {
-            OrderID = 10283,
-            OrderDate = new DateTime(1996, 8, 16),
-            ShipCountry = "Venezuela",
-            ShipCity = "Barquisimeto",
-            CustomerName = "Carlos González"
-        },
-        new SampleOrder {
-            OrderID = 10284,
-            OrderDate = new DateTime(1996, 8, 19),
-            ShipCountry = "Germany",
-            ShipCity = "Frankfurt a.M.",
-            CustomerName = "Renate Messner"
-        },
-        new SampleOrder {
-            OrderID = 10285,
-            OrderDate = new DateTime(1996, 8, 20),
-            ShipCountry = "Germany",
-            ShipCity = "Cunewalde",
-            CustomerName = "Horst Kloss"
-        },
-        new SampleOrder {
-            OrderID = 10286,
-            OrderDate = new DateTime(1996, 8, 21),
-            ShipCountry = "Germany",
-            ShipCity = "Cunewalde",
-            CustomerName = "Horst Kloss"
-        },
-        new SampleOrder {
-            OrderID = 10287,
-            OrderDate = new DateTime(1996, 8, 22),
-            ShipCountry = "Brazil",
-            ShipCity = "Rio de Janeiro",
-            CustomerName = "Janete Limeira"
-        },
-        new SampleOrder {
-            OrderID = 10288,
-            OrderDate = new DateTime(1996, 8, 23),
-            ShipCountry = "Italy",
-            ShipCity = "Reggio Emilia",
-            CustomerName = "Maurizio Moroni"
-        },
-        new SampleOrder {
-            OrderID = 10289,
-            OrderDate = new DateTime(1996, 8, 26),
-            ShipCountry = "UK",
-            ShipCity = "London",
-            CustomerName = "Victoria Ashworth"
-        },
-        new SampleOrder {
-            OrderID = 10290,
-            OrderDate = new DateTime(1996, 8, 27),
-            ShipCountry = "Brazil",
-            ShipCity = "Sao Paulo",
-            CustomerName = "Pedro Afonso"
-        },
-        new SampleOrder {
-            OrderID = 10291,
-            OrderDate = new DateTime(1996, 8, 27),
-            ShipCountry = "Brazil",
-            ShipCity = "Rio de Janeiro",
-            CustomerName = "Bernardo Batista"
-        },
-        new SampleOrder {
-            OrderID = 10292,
-            OrderDate = new DateTime(1996, 8, 28),
-            ShipCountry = "Brazil",
-            ShipCity = "Sao Paulo",
-            CustomerName = "Anabela Domingues"
-        },
-        new SampleOrder {
-            OrderID = 10293,
-            OrderDate = new DateTime(1996, 8, 29),
-            ShipCountry = "Mexico",
-            ShipCity = "México D.F.",
-            CustomerName = "Miguel Angel Paolino"
-        },
-        new SampleOrder {
-            OrderID = 10294,
-            OrderDate = new DateTime(1996, 8, 30),
-            ShipCountry = "USA",
-            ShipCity = "Albuquerque",
-            CustomerName = "Paula Wilson"
-        },
-        new SampleOrder {
-            OrderID = 10295,
-            OrderDate = new DateTime(1996, 9, 2),
-            ShipCountry = "France",
-            ShipCity = "Reims",
-            CustomerName = "Paul Henriot"
-        },
-        new SampleOrder {
-            OrderID = 10296,
-            OrderDate = new DateTime(1996, 9, 3),
-            ShipCountry = "Venezuela",
-            ShipCity = "Barquisimeto",
-            CustomerName = "Carlos González"
-        },
-        new SampleOrder {
-            OrderID = 10297,
-            OrderDate = new DateTime(1996, 9, 4),
-            ShipCountry = "France",
-            ShipCity = "Strasbourg",
-            CustomerName = "Frédérique Citeaux"
-        }
     ];
 }
