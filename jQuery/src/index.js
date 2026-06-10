@@ -37,7 +37,7 @@ $(() => {
     showBorders: true,
     columnAutoWidth: true,
     onNodesInitialized(e) {
-        
+
         function createSummaryNode(node, count) {
             return {
                 key: `summary_${node.key}`,
@@ -55,7 +55,6 @@ $(() => {
 
             for (const child of children) {
                 const childDescendants = buildSummaries(child); 
-                console.log(`Node has ${childDescendants} descendants.`, child);
                 count += (child.visible ? 1 : 0) + childDescendants;
             }
 
