@@ -8,11 +8,11 @@ import TreeList, {
   FilterRow,
   HeaderFilter,
 } from 'devextreme-react/tree-list';
-import type { RowPreparedEvent, NodesInitializedEvent, Node } from 'devextreme/ui/tree_list';
+import type { TreeListTypes } from 'devextreme-react/tree-list';
 
 import { employees } from './data';
 
-interface SummaryNode extends Node {
+interface SummaryNode extends TreeListTypes.Node {
   isSummary?: boolean;
 }
 
@@ -51,11 +51,11 @@ function buildSummaries(node: SummaryNode): number {
 const expandedRowKeys = [1];
 
 function App(): JSX.Element {
-  const onNodesInitialized = useCallback((e: NodesInitializedEvent) => {
+  const onNodesInitialized = useCallback((e: TreeListTypes.NodesInitializedEvent) => {
     buildSummaries(e.root as SummaryNode);
   }, []);
 
-  const onRowPrepared = useCallback((e: RowPreparedEvent) => {
+  const onRowPrepared = useCallback((e: TreeListTypes.RowPreparedEvent) => {
     const node = e.node as SummaryNode | undefined;
 
     if (e.rowType === 'data' && node?.isSummary) {
