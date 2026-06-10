@@ -1,93 +1,68 @@
 import { Component } from '@angular/core';
-import { DxTreeListModule, DxTreeListComponent } from 'devextreme-angular';
+import { DxTreeListModule } from 'devextreme-angular';
+import type { DxTreeListTypes } from 'devextreme-angular/ui/tree-list';
 
-import { Department, Service } from './app.service';
+import { Service, type Employee } from './app.service';
 
-import ArrayStore from "devextreme/data/array_store";
-import DataSource from "devextreme/data/data_source";
+interface SummaryNode extends DxTreeListTypes.Node {
+  isSummary?: boolean;
+}
 
 @Component({
     selector: 'app-root',
-    imports: [],
+    imports: [DxTreeListModule],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    providers: [Service]  
 })
 export class AppComponent {
-  title = 'TreeList with a summary';
+  employees: Employee[];
 
-  departments: DataSource;
-  values: any = [];
-
-  constructor(service: Service) {
-    this.departments = new DataSource({
-      store: new ArrayStore({
-        key: "ID",
-        data: service.getDepartment()
-      }),
-      reshapeOnPush: true
-    });
-    this.getSummary = this.getSummary.bind(this);
+  constructor(private service: Service) {
+    this.employees = service.getEmployees();
   }
 
-  onContentReady(e: any) {
-    if (e.component.isNotFirstLoad) return;
-    e.component.isNotFirstLoad = true;
-    this.getSummary(e.component.getRootNode());
+  createSummaryNode(node: SummaryNode, count: number): SummaryNode {
+    return {
+      key: `summary_${node.key}`,
+      parent: node.parent,
+      level: node.level + 1,
+      isSummary: true,
+      data: { Title: `Count: ${count}` },
+      children: [],
+      visible: true,
+    };
+  }
 
-    var store = e.component.getDataSource().store();
-    store.load().done((items) => {
-      let lastId = items[items.length - 1].ID + 1;
+  buildSummaries(node: SummaryNode): number {
+    const children = node.children || [];
+    node.children = children;
 
-      let changes = [];
-      for (let i = 0; i < this.values.length; i++) {
+    let count = 0;
 
-        changes.push({
-          type: "insert",
-          data: {
-            ID: lastId,
-            Head_ID: this.values[i].Head_ID,
-            Department: this.values[i].Department,
-            Budget: this.values[i].Budget
-          }
-        });
-        lastId++;
+    for (const child of children as SummaryNode[]) {
+      if (!child.isSummary) {
+        const childDescendants = this.buildSummaries(child);
+        count += (child.visible ? 1 : 0) + childDescendants;
       }
-      store.push(changes);
-    });
+    }
+
+    if (count > 0) {
+      node.children.push(this.createSummaryNode(node, count));
+    }
+
+    return count;
   }
 
-  getSummary(node: any) {
-    let result = [0, 0];
-    if (node.hasChildren) {
-      node.children.forEach((n) => {
-        result[0] = result[0] + 1; //count
-        result[1] += n.data.Budget; //sum
-        this.getSummary(n).forEach((item, index) => {
-
-          result[index] += item;
-        });
-      });
-    }
-    if (result[0] > 0) {
-      if (node.data) {
-        this.values.push({
-          Department: node.data.Department + " Count = " + result[0],
-          Head_ID: node.data.ID,
-          Budget: result[1]
-        });
-      } else
-        this.values.push({
-          Department: "Overall Count = " + result[0],
-          Head_ID: 0,
-          Budget: result[1]
-        });
-    }
-    return result;
+  onNodesInitialized(e: DxTreeListTypes.NodesInitializedEvent): void {
+    this.buildSummaries(e.root as SummaryNode);
   }
 
-  onRowPrepared(e) {
-    if (e.rowType === "data" && e.values[0].includes("=")) {
-      e.rowElement.style.backgroundColor = "#E8E8E8";
+  onRowPrepared(e: DxTreeListTypes.RowPreparedEvent): void {
+    const node = e.node as SummaryNode | undefined;
+
+    if (e.rowType === 'data' && node?.isSummary) {
+      e.rowElement.classList.add('summary-row');
     }
   }
 }
