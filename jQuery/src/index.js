@@ -54,6 +54,7 @@ $(() => {
             let count = 0;
 
             for (const child of children) {
+                if (child.isSummary) continue;
                 const childDescendants = buildSummaries(child); 
                 count += (child.visible ? 1 : 0) + childDescendants;
             }
