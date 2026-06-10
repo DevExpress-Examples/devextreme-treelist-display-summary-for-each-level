@@ -1,15 +1,33 @@
-<dx-tree-list id="treeList"
-              [dataSource]="departments"
-              [repaintChangesOnly]="true"
-              keyExpr="ID"
-              parentIdExpr="Head_ID"
-              [showRowLines]="true"
-              [showBorders]="true"
-              [columnAutoWidth]="true"
-              [autoExpandAll]="true"
-              (onContentReady)="onContentReady($event)"
-              (onRowPrepared)="onRowPrepared($event)">
-  <dxi-column dataField="Department"></dxi-column>
-  <dxi-column dataField="Location"></dxi-column>
-  <dxi-column dataField="Budget" format="currency"></dxi-column>
-</dx-tree-list>
+<div class="demo-container">
+  <dx-tree-list
+    id="employees"
+    [dataSource]="employees"
+    [rootValue]="-1"
+    keyExpr="ID"
+    parentIdExpr="Head_ID"
+    [showRowLines]="true"
+    [showBorders]="true"
+    [columnAutoWidth]="true"
+    [expandedRowKeys]="[1]"
+    (onNodesInitialized)="onNodesInitialized($event)"
+    (onRowPrepared)="onRowPrepared($event)"
+  >
+    <dxo-tree-list-sorting mode="multiple"></dxo-tree-list-sorting>
+    <dxo-tree-list-search-panel [visible]="true"></dxo-tree-list-search-panel>
+    <dxo-tree-list-filter-row [visible]="true"></dxo-tree-list-filter-row>
+    <dxo-tree-list-header-filter [visible]="true"></dxo-tree-list-header-filter>
+
+    <dxi-tree-list-column
+      dataField="Title"
+      caption="Position"
+    ></dxi-tree-list-column>
+    <dxi-tree-list-column dataField="Full_Name"></dxi-tree-list-column>
+    <dxi-tree-list-column dataField="City"></dxi-tree-list-column>
+    <dxi-tree-list-column dataField="State"></dxi-tree-list-column>
+    <dxi-tree-list-column dataField="Mobile_Phone"></dxi-tree-list-column>
+    <dxi-tree-list-column
+      dataField="Hire_Date"
+      dataType="date"
+    ></dxi-tree-list-column>
+  </dx-tree-list>
+</div>
