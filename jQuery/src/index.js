@@ -37,38 +37,35 @@ $(() => {
     showBorders: true,
     columnAutoWidth: true,
     onNodesInitialized(e) {
-      function calculateSummary(node) {
-        let sum = 0;
 
-        e.component.forEachNode(node.children, (n) => {
-          if (n.visible) {
-            sum++;
-          }
-        });
-
-        return sum;
-      }
-
-      function createSummaryNode(node, count) {
-        return {
-          key: `summary_${node.key}`,
-          parent: node.parent,
-          isSummary: true,
-          data: {
-            Title: `Count: ${count}`,
-          },
-          children: [],
-          visible: true,
-        };
-      }
-
-      e.component.forEachNode([e.root], (node) => {
-        const count = calculateSummary(node);
-
-        if (count > 0) {
-          node.children.push(createSummaryNode(node, count));
+        function createSummaryNode(node, count) {
+            return {
+                key: `summary_${node.key}`,
+                parent: node.parent,
+                isSummary: true,
+                data: { Title: `Count: ${count}` },
+                children: [],
+                visible: true,
+            };
         }
-      });
+
+        function buildSummaries(node) {
+            const children = node.children || [];
+            let count = 0;
+
+            for (const child of children) {
+                if (child.isSummary) continue;
+                const childDescendants = buildSummaries(child); 
+                count += (child.visible ? 1 : 0) + childDescendants;
+            }
+
+            if (count > 0) {
+                node.children.push(createSummaryNode(node, count));
+            }
+            return count;
+        }
+
+        buildSummaries(e.root);
     },
     onRowPrepared(e) {
       if (e.rowType === 'data' && e.node?.isSummary) {
