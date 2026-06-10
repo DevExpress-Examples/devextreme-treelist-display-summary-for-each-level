@@ -35,10 +35,10 @@ function buildSummaries(node: SummaryNode): number {
   let count = 0;
 
   for (const child of children as SummaryNode[]) {
-    if (child.isSummary) continue;
-
-    const childDescendants = buildSummaries(child);
-    count += (child.visible ? 1 : 0) + childDescendants;
+    if (!child.isSummary) {
+      const childDescendants = buildSummaries(child);
+      count += (child.visible ? 1 : 0) + childDescendants;
+    }
   }
 
   if (count > 0) {
