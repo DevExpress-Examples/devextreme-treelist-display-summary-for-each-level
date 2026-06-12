@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DxTreeListModule } from 'devextreme-angular';
 import type { DxTreeListTypes } from 'devextreme-angular/ui/tree-list';
 
@@ -13,6 +13,7 @@ interface SummaryNode extends DxTreeListTypes.Node {
     imports: [DxTreeListModule],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [Service]  
 })
 export class AppComponent {
