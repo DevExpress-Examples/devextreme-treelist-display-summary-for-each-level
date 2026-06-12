@@ -4,19 +4,15 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-# DevExtreme TreeList - Display a Summary for Each Hierarchy Level
+# DevExtreme TreeList - Display a Summary for Each Node Branch
 
-This example demonstrates how to display a custom summary row for each level in the DevExtreme [TreeList](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeList/Overview/) hierarchy. The summary row shows the total number of descendant records within a node's subtree.
+This example displays custom summary rows for each node branch in the DevExtreme [TreeList](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeList/Overview/) hierarchy. These rows display the number of descendant nodes (first-level and indirect child nodes) for individual branches.
 
 ![DevExtreme TreeList - Display summary for each level](images/display-summary-for-each-level.png)
 
 ## Implementation Details
 
-The solution uses the [onNodesInitialized](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onNodesInitialized) event handler to traverse the TreeList node hierarchy after it is created.
-
-A recursive function walks through all child nodes, calculates the number of visible descendants for each branch, and appends a custom summary node to the end of the corresponding level.
-
-The following code recursively traverses the hierarchy and calculates descendant counts:
+This example configures [onNodesInitialized](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onNodesInitialized) to loop through all TreeList nodes in a recursive function. This function calculates the number of visible descendants for each node branch in the component and appends custom summary nodes to these branches:
 
 ```JavaScript
 function buildSummaries(node) {
@@ -37,7 +33,7 @@ function buildSummaries(node) {
 }
 ```
 
-The following code creates a custom summary node and inserts it into the node's children collection:
+The following function configures the custom summary nodes:
 
 ```JavaScript
 function createSummaryNode(node, count) {
@@ -54,11 +50,19 @@ function createSummaryNode(node, count) {
 }
 ```
 
-The example uses the Node object's [children](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Node/#children), [parent](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Node/#parent), and [visible](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Node/#visible) properties to navigate the hierarchy and calculate totals. Summary rows are identified through a custom `isSummary` flag and styled in the [onRowPrepared](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onRowPrepared) event handler.
+To style summary rows, this example defines a custom `isSummary` option in appended [node objects](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Node/). [onRowPrepared](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onRowPrepared) is configured to use this custom option to add the `summary-row` class to summary nodes:
 
-Since summary nodes are injected directly into the TreeList node hierarchy, this approach works entirely on the client side and does not require modifications to the original data source.
+```JavaScript
+onRowPrepared(e) {
+    if (e.rowType === 'data' && e.node?.isSummary) {
+        e.rowElement.addClass('summary-row');
+    }
+},
+```
 
-Note that this solution does not support selection and remote operations.
+> [!Note]
+> - This implementation does not support selection and remote operations.
+> - This approach does not modify or require modifications to the TreeList data source.
 
 ## Files to Review
 
