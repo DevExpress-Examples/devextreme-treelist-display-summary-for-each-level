@@ -50,7 +50,7 @@ function createSummaryNode(node, count) {
 }
 ```
 
-To style summary rows, this example defines a custom `isSummary` option in appended [node objects](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Node/). [onRowPrepared](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onRowPrepared) is configured to use this custom option to add the `summary-row` class to summary nodes:
+To apply styles to summary rows, define a custom `isSummary` option in appended [node objects](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Node/). The  [onRowPrepared](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onRowPrepared) event handler uses this custom option to add a `summary-row` class to summary nodes:
 
 ```JavaScript
 onRowPrepared(e) {
