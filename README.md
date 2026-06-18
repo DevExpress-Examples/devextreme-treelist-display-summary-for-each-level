@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-# DevExtreme TreeList - Display a Summary for Each Node Branch
+# DevExtreme TreeList - Display a Summary for Each Branch
 
 This example displays custom summary rows for each branch in the DevExtreme [TreeList](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeList/Overview/) hierarchy. These rows display the number of descendant nodes (first-level and indirect child nodes) for individual branches.
 
@@ -12,7 +12,7 @@ This example displays custom summary rows for each branch in the DevExtreme [Tre
 
 ## Implementation Details
 
-This example configures [onNodesInitialized](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onNodesInitialized) to loop through all TreeList nodes in a recursive function. This function calculates the number of visible descendants for each node branch in the component and appends custom summary nodes to these branches:
+This example configures [onNodesInitialized](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTreeList/Configuration/#onNodesInitialized) to loop through all TreeList nodes in a recursive function. This function calculates the number of visible descendants for each branch in the component and appends custom summary nodes to these branches:
 
 ```JavaScript
 function buildSummaries(node) {
@@ -61,8 +61,7 @@ onRowPrepared(e) {
 ```
 
 > [!Note]
-> - This implementation does not support selection and remote operations.
-> - This approach does not modify or require modifications to the TreeList data source.
+> This implementation does not support selection and remote operations.
 
 ## Files to Review
 
