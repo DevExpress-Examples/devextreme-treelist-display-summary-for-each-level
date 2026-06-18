@@ -6,7 +6,7 @@
 <!-- default badges end -->
 # DevExtreme TreeList - Display a Summary for Each Node Branch
 
-This example displays custom summary rows for each node branch in the DevExtreme [TreeList](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeList/Overview/) hierarchy. These rows display the number of descendant nodes (first-level and indirect child nodes) for individual branches.
+This example displays custom summary rows for each branch in the DevExtreme [TreeList](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeList/Overview/) hierarchy. These rows display the number of descendant nodes (first-level and indirect child nodes) for individual branches.
 
 ![DevExtreme TreeList - Display summary for each level](images/display-summary-for-each-level.png)
 
