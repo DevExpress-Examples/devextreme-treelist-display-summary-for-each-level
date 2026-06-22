@@ -33,7 +33,7 @@ function buildSummaries(node) {
 }
 ```
 
-The following function configures the custom summary nodes:
+The following function configures custom summary nodes:
 
 ```JavaScript
 function createSummaryNode(node, count) {
